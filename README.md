@@ -107,3 +107,7 @@ INSERT INTO Rooms VALUES (1003,'VIP Room', 3000.00, 'Y');
 ## 👨‍💻 Author
 
 Developed for demonstration of **Hotel Management System** database and application workflow.
+
+---
+
+## Created with ♥️ for my senior.
