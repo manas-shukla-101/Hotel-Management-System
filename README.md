@@ -23,7 +23,8 @@ Before running the application, you need to set up the database.
 
 ### 📺 Setup Guide
 - [Watch Database Setup Tutorial](https://youtu.be/Fh-1eO8SA9o?si=gCeBVRRMNdB4L38g)
-  Keep in mind for using this when you are setting up password set it: 993097(then only it will work. I am working on it soon will update since then...)
+
+  Keep in mind for using this when you are setting up password set it: 993097(then only it will work. I am working on it soon will update till then...)
 
 ### 📜 SQL Code
 
