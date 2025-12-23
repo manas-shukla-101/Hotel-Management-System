@@ -28,21 +28,26 @@ Before running the application, you need to set up the database.
 
 Copy & paste the following SQL code into your database (Oracle/SQL environment):  
 
--- Create Users Table
+```SQL*PLUS
+#Create Users Table
 CREATE TABLE Users (
 user_id NUMBER PRIMARY KEY,
 name VARCHAR2(100) NOT NULL,
 contact VARCHAR2(15) NOT NULL,
 email VARCHAR2(100) NOT NULL UNIQUE,
 password VARCHAR2(100) NOT NULL
-);
+); 
+```
 
--- Auto-increment for user_id
+ ```SQL*PLUS
+#Auto-increment for user_id
 CREATE SEQUENCE user_id_seq
 START WITH 1
 INCREMENT BY 1
 NOCACHE;
+```
 
+```SQL*PLUS
 CREATE OR REPLACE TRIGGER user_id_trigger
 BEFORE INSERT ON Users
 FOR EACH ROW
@@ -52,16 +57,19 @@ SELECT user_id_seq.NEXTVAL INTO :NEW.user_id FROM dual;
 END IF;
 END;
 /
+```
 
--- Create Rooms Table
+```SQL*PLUS
+#Create Rooms Table
 CREATE TABLE Rooms (
 room_id NUMBER PRIMARY KEY,
 room_type VARCHAR2(50) NOT NULL,
 price NUMBER(10, 2) NOT NULL,
 available CHAR(1) DEFAULT 'Y' CHECK (available IN ('Y', 'N'))
 );
-
--- Create Reservations Table
+```
+```SQL*PLUS
+#Create Reservations Table
 CREATE TABLE Reservations (
 reservation_id NUMBER PRIMARY KEY,
 user_id NUMBER REFERENCES Users(user_id),
@@ -71,20 +79,22 @@ check_out_date DATE NOT NULL,
 no_of_guests NUMBER NOT NULL,
 total_amount NUMBER(10, 2) NOT NULL
 );
-
--- Create Payments Table
+```
+```SQL*PLUS
+#Create Payments Table
 CREATE TABLE Payments (
 payment_id NUMBER PRIMARY KEY,
 reservation_id NUMBER REFERENCES Reservations(reservation_id),
 payment_mode VARCHAR2(50) NOT NULL,
 payment_status VARCHAR2(50) DEFAULT 'Pending'
 );
-
--- Insert Default Rooms
+```
+```SQL*PLUS
+#Insert Default Rooms
 INSERT INTO Rooms VALUES (1001,'Single Room', 1000.00, 'Y');
 INSERT INTO Rooms VALUES (1002,'Double Room', 1500.00, 'Y');
 INSERT INTO Rooms VALUES (1003,'VIP Room', 3000.00, 'Y');
-
+```
 
 ---
 
@@ -110,4 +120,4 @@ Developed for demonstration of **Hotel Management System** database and applicat
 
 ---
 
-## Created with ♥️ for my senior.
+_Created with ♥️ for my senior._
